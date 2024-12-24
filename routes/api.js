@@ -1,7 +1,8 @@
 'use strict';
 
-const fetch = require('node-fetch');
-const likesData = {}; // in-memory storage for likes by IP and stock
+import fetch from 'node-fetch';
+
+const likesData = {}; // In-memory storage for likes by IP and stock
 
 module.exports = function (app) {
   app.route('/api/stock-prices')
@@ -19,7 +20,7 @@ module.exports = function (app) {
         stocks.map(async (stock) => {
           const stockPrice = await getStockPrice(stock);
           if (!stockPrice) {
-            return { error: `Stock ${stock} not found` };
+            return { stock, error: `Stock ${stock} not found` };
           }
 
           // Handle likes
@@ -56,10 +57,14 @@ module.exports = function (app) {
 // Helper function to fetch stock prices
 async function getStockPrice(stock) {
   try {
-    const apiKey = 'API_KEY'; // Replace with your stock API key
+    const apiKey = 'API_KEY'; // Stock API key
     const response = await fetch(`https://api.example.com/stock/${stock}/quote?apikey=${apiKey}`);
+    if (!response.ok) {
+      console.error(`Error fetching stock: ${response.statusText}`);
+      return null;
+    }
     const data = await response.json();
-    return data.latestPrice; // Adjust based on the API used
+    return data.latestPrice; // API used
   } catch (error) {
     console.error('Error fetching stock price:', error);
     return null;
