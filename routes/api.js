@@ -56,7 +56,7 @@ module.exports = function (app) {
 // Helper function to fetch stock prices
 async function getStockPrice(stock) {
   try {
-    const apiKey = 'YOUR_API_KEY'; // Replace with your stock API key
+    const apiKey = 'API_KEY'; // Replace with your stock API key
     const response = await fetch(`https://api.example.com/stock/${stock}/quote?apikey=${apiKey}`);
     const data = await response.json();
     return data.latestPrice; // Adjust based on the API used
