@@ -16,14 +16,13 @@ function generateRandomStockPrice(min, max) {
 
 async function getStockPrice(stockSymbol) {
   // Simulate asynchronous operation: mock prices based on predefined ranges
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       if (stockPriceRanges[stockSymbol]) {
         const { min, max } = stockPriceRanges[stockSymbol];
-        // Return a random price within range for stock symbol, as a number
         resolve({ price: generateRandomStockPrice(min, max) });
       } else {
-        reject(new Error('Stock symbol not found'));
+        resolve(null); // Return null for unsupported stock symbols
       }
     }, 100); // Simulating slight delay
   });
