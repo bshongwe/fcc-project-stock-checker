@@ -9,7 +9,7 @@ suite('Functional Tests', function() {
   
   // Test 1: Send a GET request with a NASDAQ stock symbol
   test('GET /api/stock-prices with 1 stock symbol', function(done) {
-    const stockSymbol = 'AAPL';
+    const stockSymbol = 'GOOG';
 
     chai.request(server)
       .get('/api/stock-prices')
@@ -32,7 +32,7 @@ suite('Functional Tests', function() {
 
   // Test 2: Send a GET request with 2 stock symbols and compare rel_likes
   test('GET /api/stock-prices with 2 stock symbols', function(done) {
-    const stockSymbols = ['AAPL', 'MSFT'];
+    const stockSymbols = ['GOOG', 'MSFT'];
 
     chai.request(server)
       .get('/api/stock-prices')
@@ -59,7 +59,7 @@ suite('Functional Tests', function() {
 
   // Test 3: Send a GET request with a stock symbol and like=true
   test('GET /api/stock-prices with like=true should add a like', function(done) {
-    const stockSymbol = 'AAPL';
+    const stockSymbol = 'GOOG';
 
     chai.request(server)
       .get('/api/stock-prices')
@@ -81,7 +81,7 @@ suite('Functional Tests', function() {
 
   // Test 4: Ensure no more than 1 like per IP
   test('GET /api/stock-prices should not allow more than 1 like per IP', function(done) {
-    const stockSymbol = 'AAPL';
+    const stockSymbol = 'GOOG';
 
     // First like request
     chai.request(server)

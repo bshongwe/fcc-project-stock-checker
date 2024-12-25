@@ -4,7 +4,7 @@
 const stockPriceRanges = {
   AAPL: { min: 100, max: 2000 },
   MSFT: { min: 100, max: 3000 },
-  GOOGL: { min: 1000, max: 5000 },
+  GOOG: { min: 1000, max: 5000 },
   AMZN: { min: 1000, max: 4000 },
   TSLA: { min: 200, max: 2000 },
 };
