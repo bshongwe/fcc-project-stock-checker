@@ -13,6 +13,7 @@ suite('Functional Tests', function() {
 
     chai.request(server)
       .get('/api/stock-prices')
+      .set("content-type", "application/json")
       .query({ symbol: stockSymbol })
       .end(function(err, res) {
         if (err) return done(err);
@@ -36,6 +37,7 @@ suite('Functional Tests', function() {
 
     chai.request(server)
       .get('/api/stock-prices')
+      .set("content-type", "application/json")
       .query({ symbol: stockSymbols })
       .end(function(err, res) {
         if (err) return done(err);
@@ -63,6 +65,7 @@ suite('Functional Tests', function() {
 
     chai.request(server)
       .get('/api/stock-prices')
+      .set("content-type", "application/json")
       .query({ symbol: stockSymbol, like: true })
       .end(function(err, res) {
         if (err) return done(err);
@@ -86,6 +89,7 @@ suite('Functional Tests', function() {
     // First like request
     chai.request(server)
       .get('/api/stock-prices')
+      .set("content-type", "application/json")
       .query({ symbol: stockSymbol, like: true })
       .end(function(err, res1) {
         if (err) return done(err);
@@ -100,6 +104,7 @@ suite('Functional Tests', function() {
         // Second like request from the same IP
         chai.request(server)
           .get('/api/stock-prices')
+          .set("content-type", "application/json")
           .query({ symbol: stockSymbol, like: true })
           .end(function(err, res2) {
             if (err) return done(err);
